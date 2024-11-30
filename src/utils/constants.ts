@@ -579,6 +579,10 @@ export const Devs = /* #__PURE__*/ Object.freeze({
         name: "jamesbt365",
         id: 158567567487795200n,
     },
+    gatewaydiscrdgg: {
+        name: "gatewaydisc.rdgg",
+        id: 1073325901825187841n,
+    },
 } satisfies Record<string, Dev>);
 
 // iife so #__PURE__ works correctly
