@@ -111,7 +111,7 @@ function ensureOwnStatus(user: User) {
 function getBadges({ userId }: BadgeUserArgs): ProfileBadge[] {
     const user = UserStore.getUser(userId);
 
-    if (!user || user.bot) return [];
+    if (!user) return [];
 
     ensureOwnStatus(user);
 
@@ -134,7 +134,7 @@ function getBadges({ userId }: BadgeUserArgs): ProfileBadge[] {
 }
 
 const PlatformIndicator = ({ user, small = false }: { user: User; small?: boolean; }) => {
-    if (!user || user.bot) return null;
+    if (!user) return null;
 
     ensureOwnStatus(user);
 
