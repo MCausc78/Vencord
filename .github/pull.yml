@@ -1,5 +1,5 @@
 version: "1"
 rules:
-  - base: reversetk
+  - base: better
     upstream: Vendicated:dev
-    mergeMethod: hardreset
+    mergeMethod: squash
