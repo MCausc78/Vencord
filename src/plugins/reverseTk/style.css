@@ -1,0 +1,20 @@
+.vc-gateway-controller-action {
+    padding: 3px;
+}
+
+.vc-gateway-controller-capability {
+    padding: 4px;
+}
+
+
+.vc-reverse-tk-tab-bar {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--background-modifier-accent);
+}
+
+.vc-reverse-tk-tab-bar-item {
+    margin-right: 32px;
+    padding-bottom: 16px;
+    margin-bottom: -2px;
+}
