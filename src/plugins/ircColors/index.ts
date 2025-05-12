@@ -66,8 +66,15 @@ export default definePlugin({
         {
             find: '="SYSTEM_TAG"',
             replacement: {
-                match: /(?<=\.username.{0,50}?)style:/,
-                replace: "style:{color:$self.calculateNameColorForMessageContext(arguments[0])},_style:"
+                // Override colorString with our custom color and disable gradients if applying the custom color.
+                // If vcIrcColor is different than the original color, it means we are applying a custom color to the user,
+                // thus, set hasGradientColors to false, in case it was true.
+                match: /(&&null!=\i\.secondaryColor),(?<=colorString:(\i).+?(\i)=.+?)/,
+                replace: (_, assignmentRest, colorString, hasGradientColors) => `${assignmentRest};` +
+                    "let vcIrcColor=$self.calculateNameColorForMessageContext(arguments[0]);" +
+                    `${hasGradientColors}=${hasGradientColors}&&vcIrcColor===${colorString};` +
+                    `${colorString}=vcIrcColor;` +
+                    "let "
             }
         },
         {
@@ -97,6 +104,7 @@ export default definePlugin({
             ? color
             : colorString;
     },
+
     calculateNameColorForListContext(context: any) {
         const id = context?.user?.id;
         const colorString = context?.colorString;
